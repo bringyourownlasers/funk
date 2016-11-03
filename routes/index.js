@@ -235,18 +235,18 @@ router.post('/api/update/:id', function(req, res){
 })
 
 //Everytime you use the URI w/ search?name="NAME YOU INPUT", it will return data
-router.get('/api/search', function(req,res){
-  var searchQuery = req.query.q;
-  console.log(searchQuery);
+// router.get('/api/search', function(req,res){
+//   var searchQuery = req.query.q;
+//   console.log(searchQuery);
 
-  Animal.find(name: searchQuery, function(err,data){
-    if(err){
+//   Animal.find(name: searchQuery, function(err,data){
+//     if(err){
 
-    }
-    console.log(data);
-    res.json(data);
-  })
-})
+//     }
+//     console.log(data);
+//     res.json(data);
+//   })
+// })
 
 /**
  * GET '/api/delete/:id'
