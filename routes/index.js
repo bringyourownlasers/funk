@@ -5,6 +5,10 @@ var mongoose = require('mongoose');
 // our db model
 var Animal = require("../models/model.js");
 
+router.get('/create-pet', function(req, res){
+  res.render('pet-form.html');
+})
+
 /**
  * GET '/'
  * Default home route. Just relays a success message back.
@@ -39,7 +43,11 @@ router.post('/api/create', function(req, res){
     console.log(req.body);
 
     // pull out the information from the req.body
+    
+    //You would put this if statement if you arent getting all of the information, so that you dont get an error
+    if(req.body.name){
     var name = req.body.name;
+  }
     var age = req.body.age;
     var tags = req.body.tags.split(","); // split string into array
     var weight = req.body.weight;
@@ -224,6 +232,20 @@ router.post('/api/update/:id', function(req, res){
 
     })
 
+})
+
+//Everytime you use the URI w/ search?name="NAME YOU INPUT", it will return data
+router.get('/api/search', function(req,res){
+  var searchQuery = req.query.q;
+  console.log(searchQuery);
+
+  Animal.find(name: searchQuery, function(err,data){
+    if(err){
+
+    }
+    console.log(data);
+    res.json(data);
+  })
 })
 
 /**
